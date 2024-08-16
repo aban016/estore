@@ -1,9 +1,10 @@
+import 'package:estore/constraints.dart';
 import 'package:estore/screens/product_detail.dart';
 import 'package:flutter/material.dart';
 
 class Products {
   final String name;
-  final double price;
+  final String price;
   final String image;
   final String description;
 
@@ -21,9 +22,9 @@ class Shop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Products> products = [
-      Products(name: 'Product 1', price: 10.0, image: 'assets/images/product1.png', description: 'Lorem Ipsum dust'),
-      Products(name: 'Product 2', price: 20.0, image: 'assets/images/product2.png', description: 'Lorem Ipsum dust'),
-      Products(name: 'Product 3', price: 30.0, image: 'assets/images/product3.png', description: 'Lorem Ipsum dust'),
+      Products(name: 'Airpods Pro', price: '30,000', image: 'assets/images/product1.png', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae suscipit risus. Curabitur non mauris nec mi fermentum venenatis. Integer lacinia, metus at tincidunt dignissim, orci ligula pharetra nisi, vel gravida lorem risus at lacus. Quisque venenatis, nulla at commodo ullamcorper, justo enim ullamcorper lacus, id dignissim nunc purus ut arcu.'),
+      Products(name: 'Digital Watch', price: '15,000', image: 'assets/images/product2.png', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae suscipit risus. Curabitur non mauris nec mi fermentum venenatis. Integer lacinia, metus at tincidunt dignissim, orci ligula pharetra nisi, vel gravida lorem risus at lacus. Quisque venenatis, nulla at commodo ullamcorper, justo enim ullamcorper lacus, id dignissim nunc purus ut arcu.'),
+      Products(name: 'Simple Airpods', price: '6000', image: 'assets/images/product3.png', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae suscipit risus. Curabitur non mauris nec mi fermentum venenatis. Integer lacinia, metus at tincidunt dignissim, orci ligula pharetra nisi, vel gravida lorem risus at lacus. Quisque venenatis, nulla at commodo ullamcorper, justo enim ullamcorper lacus, id dignissim nunc purus ut arcu.'),
     ];
     return Container(
       child: GridView.builder(
@@ -40,17 +41,31 @@ class Shop extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(products[index].image, height: 100, width: 100,),
+                  SizedBox(height: 18,),
                   Text(products[index].name, style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold
                   ),),
+                  SizedBox(height: 5,),
                   Text('\$${products[index].price}', style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w300
                   ),),
+                  SizedBox(height: 10,),
                   ElevatedButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetail()));
-                  }, child: Text('Show Details'))
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetail(
+                      productName: products[index].name,
+                      productprice: products[index].price,
+                      productdescription: products[index].description,
+                      productimage: products[index].image,
+                    )));
+                  },
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primary
+                    ),
+
+                   child: Text('Show Details', style: TextStyle(color: txtColor),)),
                 ],
               ),
             ),

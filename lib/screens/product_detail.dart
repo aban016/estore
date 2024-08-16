@@ -2,7 +2,18 @@ import 'package:estore/constraints.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+
+  final String productName;
+  final String productprice;
+  final String productimage;
+  final String productdescription;
+
+  ProductDetail({
+    required this.productName,
+    required this.productprice,
+    required this.productimage,
+    required this.productdescription,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,23 +49,23 @@ class ProductDetail extends StatelessWidget {
           children: [
             // NOTE: Product Image
             Center(
-              child: Image(image: AssetImage('assets/images/product1.png')),
+              child: Image(image: AssetImage('${productimage}')),
             ),
             SizedBox(height: 30),
-            Text('Product Name: ', style: TextStyle(color: hColor, fontSize: 22,fontWeight: FontWeight.w500),),
+            Text('${productName}', style: TextStyle(color: hColor, fontSize: 22,fontWeight: FontWeight.bold),),
             SizedBox(height: 8,),
-            Text('Price: ', style: TextStyle(color: primary, fontSize: 20, fontWeight: FontWeight.w400),),
+            Text('PKR-${productprice}', style: TextStyle(color: primary, fontSize: 20, fontWeight: FontWeight.w400),),
             SizedBox(height: 8,),
-            Text('Description: ', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w400),),
+            Text('Description:', style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w400),),
             SizedBox(height: 2,),
-            Text('', style: TextStyle(color: Colors.grey, fontSize: 16,),),
+            Text(' ${productdescription}', style: TextStyle(color: Colors.grey, fontSize: 12,),),
             SizedBox(height: 30,),
             Center(
               child: ElevatedButton(onPressed: (){
                 // TODO: Add your button functionality here
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Product added to your cart!'),
+                      content: Text('${productName} added to your cart!'),
                     ),
                   );
               }, child: Text('Add To Cart', style: TextStyle(color: txtColor),),
