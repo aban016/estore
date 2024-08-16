@@ -1,4 +1,5 @@
-import 'package:estore/login.dart';
+
+import 'package:estore/screens/shop.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "E-store",
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: Shop(),
     );
   }
 }
