@@ -2,7 +2,6 @@ import 'package:estore/constraints.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {
-
   final String productName;
   final String productprice;
   final String productimage;
@@ -18,6 +17,7 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'E-Store',
@@ -41,7 +41,6 @@ class ProductDetail extends StatelessWidget {
           ),
         ],
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -52,30 +51,70 @@ class ProductDetail extends StatelessWidget {
               child: Image(image: AssetImage('${productimage}')),
             ),
             SizedBox(height: 30),
-            Text('${productName}', style: TextStyle(color: hColor, fontSize: 22,fontWeight: FontWeight.bold),),
-            SizedBox(height: 8,),
-            Text('PKR-${productprice}', style: TextStyle(color: primary, fontSize: 20, fontWeight: FontWeight.w400),),
-            SizedBox(height: 8,),
-            Text('Description:', style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w400),),
-            SizedBox(height: 2,),
-            Text(' ${productdescription}', style: TextStyle(color: Colors.grey, fontSize: 12,),),
-            SizedBox(height: 30,),
+            Text(
+              '${productName}',
+              style: TextStyle(
+                  color: hColor, fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              'PKR-${productprice}',
+              style: TextStyle(
+                  color: primary, fontSize: 20, fontWeight: FontWeight.w400),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              'Description:',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            Text(
+              ' ${productdescription}',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 12,
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Center(
-              child: ElevatedButton(onPressed: (){
-                // TODO: Add your button functionality here
-                ScaffoldMessenger.of(context).showSnackBar(
+              child: ElevatedButton(
+                onPressed: () {
+                  // TODO: Add your button functionality here
+                  ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('${productName} added to your cart!'),
                     ),
                   );
-              }, child: Text('Add To Cart', style: TextStyle(color: txtColor),),
+                },
+                child: Text(
+                  'Add To Cart',
+                  style: TextStyle(color: txtColor),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primary,
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                  ),
                 ),
               ),
             ),
           ],
-        ), 
+        ),
       ),
     );
   }

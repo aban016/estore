@@ -31,11 +31,19 @@ class Shop extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 15.0,
-          crossAxisSpacing: 15
+          crossAxisSpacing: 15.0
         ),
         itemCount: products.length,
         itemBuilder: (context, index){
           return Card(
+            color: Colors.white,
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ), 
+            ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -47,7 +55,7 @@ class Shop extends StatelessWidget {
                     fontWeight: FontWeight.bold
                   ),),
                   SizedBox(height: 5,),
-                  Text('\$${products[index].price}', style: TextStyle(
+                  Text('\PKR ${products[index].price}', style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w300
                   ),),
@@ -62,7 +70,14 @@ class Shop extends StatelessWidget {
                   },
 
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: primary
+                      backgroundColor: primary,
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
+                      ),
                     ),
 
                    child: Text('Show Details', style: TextStyle(color: txtColor),)),
